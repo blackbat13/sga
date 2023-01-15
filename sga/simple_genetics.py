@@ -17,7 +17,6 @@ class SimpleGenetics(ABC):
         self._populate()
         population_fitness = self._fitness()
         generation = 1
-        generation_list = []
         fitness_list = []
         while population_fitness < 1 and generation < max_generations:
             males, females = self._select()
@@ -25,16 +24,11 @@ class SimpleGenetics(ABC):
             self._mutate(children)
             self._population = males + females + children
             population_fitness = self._fitness()
-
-            generation_list.append(generation)
             fitness_list.append(population_fitness)
-
             generation += 1
 
-
-        x_points = numpy.array(generation_list)
         y_points = numpy.array(fitness_list)
-        plt.plot(x_points, y_points)
+        plt.plot(y_points)
         plt.show()
         return population_fitness, generation
 
