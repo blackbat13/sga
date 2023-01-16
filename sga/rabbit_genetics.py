@@ -1,6 +1,6 @@
-from sga.simple_genetics import SimpleGenetics
 import random
-import statistics
+
+from sga.simple_genetics import SimpleGenetics
 
 
 class RabbitGenetics(SimpleGenetics):
@@ -16,8 +16,8 @@ class RabbitGenetics(SimpleGenetics):
         self._population = [int(random.triangular(self._min_weight, self._max_weight, self._mean_weight)) for i in
                             range(self._population_size)]
 
-    def _fitness(self):
-        return statistics.mean(self._population) / self._goal
+    def _fitness(self, el):
+        return el
 
     def _make_child(self, male, female):
         return random.randint(female, male)
