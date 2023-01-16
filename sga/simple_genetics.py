@@ -7,12 +7,13 @@ import numpy
 
 
 class SimpleGenetics(ABC):
-    def __init__(self, population_size=100, children_count=6, to_retain=30, mutation_prob=0.01, goal=6000):
+    def __init__(self, population_size=100, children_count=6, to_retain=30, mutation_prob=0.01, goal=6000, name="Genetic algorithm"):
         self._population_size = population_size
         self._children_count = children_count
         self._to_retain = to_retain
         self._mutation_prob = mutation_prob
         self._goal = goal
+        self._name = name
         self._population = []
 
     def run(self, max_generations=1000) -> (int, int):
@@ -31,6 +32,9 @@ class SimpleGenetics(ABC):
 
         y_points = numpy.array(fitness_list)
         plt.plot(y_points)
+        plt.xlabel("Generation")
+        plt.ylabel("Population fitness")
+        plt.title(self._name)
         plt.show()
         return population_fitness, generation
     
