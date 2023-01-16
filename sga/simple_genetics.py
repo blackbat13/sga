@@ -39,6 +39,7 @@ class SimpleGenetics(ABC):
         return population_fitness, generation
     
     def _population_fitness(self):
+        self._compute_fitness()
         return statistics.mean([self._fitness(el) for el in self._population]) / self._goal
 
     def _select(self):
@@ -75,6 +76,10 @@ class SimpleGenetics(ABC):
     
     @abstractmethod
     def _fitness(self, el):
+        pass
+    
+    @abstractmethod
+    def _compute_fitness(self):
         pass
 
     @abstractmethod

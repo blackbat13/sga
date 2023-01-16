@@ -27,6 +27,9 @@ class RabbitGenetics(SimpleGenetics):
 
     def _sort_population(self):
         self._population = sorted(self._population)
+        
+    def _compute_fitness(self):
+        pass
 
 
 if __name__ == "__main__":
